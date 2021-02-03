@@ -1,7 +1,10 @@
-import { Container, Statistic, Segment, Grid, Icon, Form, Button } from 'semantic-ui-react'
+import { Container, Statistic, Segment, Grid, Icon } from 'semantic-ui-react'
 import MainHeader from './components/MainHeader'
+import NewEntryForm from './components/NewEntryForm'
+import DisplayBalance from './components/DisplayBalance'
 
 import './App.css';
+
 
 function App() {
   return (
@@ -17,12 +20,7 @@ function App() {
         <Grid columns={2} divided>
         <Grid.Row>
           <Grid.Column>
-          <Statistic size='tiny' color='green'>
-          <Statistic.Label style={{textAlign:'center'}}>
-            Income:
-          </Statistic.Label>
-          <Statistic.Value>1,045.50</Statistic.Value>
-        </Statistic>
+         <DisplayBalance/>
 
           </Grid.Column>
           <Grid.Column>
@@ -74,31 +72,8 @@ function App() {
 </Grid.Row>
 </Grid>
 </Segment>
-
 <MainHeader title='Add new transaction' type='h3'/>
-
-<Form unselectable>
-  <Form.Group>
-    <Form.Input 
-    icon="tags" 
-    width={12}
-    label='Description'
-    placeholder="New shinny thing"
-    />
-    <Form.Input 
-    icon='dollar'
-    iconPosition='left'
-    width={4}
-    label='Value'
-    placeholder="100.00"
-    />
-  </Form.Group>
-  <Button.Group style={{marginTop: 20}}>
-    <Button>Cancel</Button>
-    <Button.Or/>
-    <Button primary>OK</Button>
-  </Button.Group>
-</Form>
+<NewEntryForm />
     </Container>
   );
 }
