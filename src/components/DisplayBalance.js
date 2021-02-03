@@ -1,13 +1,15 @@
 import React from 'react'
 import { Statistic } from 'semantic-ui-react'
 
-function DisplayBalance() {
+function DisplayBalance({title, value, color="black", size="tiny"} ) {
     return (
-        <Statistic size='tiny' color='green'>
+        <Statistic size={size} color={color}>
         <Statistic.Label style={{textAlign:'center'}}>
-          Income:
+          {title}
         </Statistic.Label>
-        <Statistic.Value>1,045.50</Statistic.Value>
+        <Statistic.Value>
+         {value}
+            </Statistic.Value>
       </Statistic>
     )
 }

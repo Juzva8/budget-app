@@ -1,4 +1,4 @@
-import { Container, Statistic, Segment, Grid, Icon } from 'semantic-ui-react'
+import { Container, Segment, Grid, Icon } from 'semantic-ui-react'
 import MainHeader from './components/MainHeader'
 import NewEntryForm from './components/NewEntryForm'
 import DisplayBalance from './components/DisplayBalance'
@@ -11,25 +11,17 @@ function App() {
 
     <Container>
 <MainHeader title="Budget" type='h1' />
-      <Statistic size='small'>
-        <Statistic.Label>Your Balance:</Statistic.Label>
-        <Statistic.Value>2,500.53</Statistic.Value>
-      </Statistic>
+<DisplayBalance title="Your Balance" value="2,500.53" size="small" />
 
       <Segment textAlign='center'>
         <Grid columns={2} divided>
         <Grid.Row>
           <Grid.Column>
-         <DisplayBalance/>
+         <DisplayBalance title='Income' value='11,800.40' color='green'/>
 
           </Grid.Column>
           <Grid.Column>
-          <Statistic size='tiny' color='red'>
-          <Statistic.Label style={{textAlign:'center'}}>
-            Expenses:
-          </Statistic.Label>
-          <Statistic.Value>625.50</Statistic.Value>
-        </Statistic>
+          <DisplayBalance title='Expenses' value='4,122.40' color='red'/>
 
           </Grid.Column>
         </Grid.Row>
