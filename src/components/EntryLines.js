@@ -7,8 +7,7 @@ function EntryLines({entries, deletedEntry }) {
     return (
         <Container>
         {entries.map((entry) =>  (
-            <EntryLine
-            key={entry.id} {...entry} deletedEntry={deletedEntry}/>
+            <EntryLine key={entry.id} {...entry} deletedEntry={deletedEntry} />
           ))}
           </Container>
     )

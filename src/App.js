@@ -9,14 +9,21 @@ import './App.css';
 
 
 function App() {
-
-  const [entries, setEnties] = useState(initialEntries)
+const [entries, setEntries] = useState(initialEntries);
 
  const deletedEntry = (id) => { 
-   const result = entries.filter(entry => entry.id !== id);
-   console.log('entries', entries)
-   console.log('result', result)
-   setEnties(result)
+   const result = entries.filter((entry) => entry.id !== id);
+   setEntries(result);
+  }
+
+
+  const addEntry = (description, value) => { 
+      const result = entries.concat({
+      id: entries.length + 1, 
+      description, 
+      value,
+    });
+    setEntries(result);
   }
 
   return (
@@ -30,37 +37,36 @@ function App() {
 <EntryLines entries={entries} deletedEntry={deletedEntry} />
 
 <MainHeader title='Add new transaction' type='h3'/>
-  <NewEntryForm />
+  <NewEntryForm addEntry = {addEntry} />
     </Container>
   );
 }
 
-export default App;
+export default App
 
-let initialEntries = [
-  { 
-    id:1,
-    description: 'Work income',
-    value: '$10,000.00',
-    isExpense:false
-  },
-  {
-    id:2,
-    description: 'electric bill',
-    value: '$250.00',
-    isExpense:true
-  },
-  {
-    id:3,
-    description: 'car bill',
-    value: '$650.00',
-    isExpense:true
-  },
-  {
-    id:4,
-    description: 'rent',
-    value: '$2,240.00',
-    isExpense:true
-  }
-
+var initialEntries = [
+ {
+  id: 1,
+  description: 'income',
+  value: '1,000.00',
+  isExpense: true,
+},
+{
+  id: 2,
+  description: 'income',
+  value: '1,000.00',
+  isExpense: true,
+},
+{
+  id: 3,
+  description: 'income',
+  value: '1,000.00',
+  isExpense: true,
+},
+{
+  id: 4,
+  description: 'income',
+  value: '1,000.00',
+  isExpense: true,
+}
 ]

@@ -14,7 +14,7 @@ function EntryLine({id, description, value, isExpense = false, deletedEntry} ) {
             </Grid.Column>
         <Grid.Column width={3}>
           <Icon name="edit" bordered/>
-          <Icon name="trash" bordered onClick={() => deletedEntry(id)}/>
+          <Icon name="trash" bordered onClick={() => deletedEntry(id)} />
         </Grid.Column>
         </Grid.Row>
         </Grid>
