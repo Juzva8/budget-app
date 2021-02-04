@@ -1,19 +1,21 @@
-import React from 'react'
-import { container } from 'semantic-ui-react'
-import EntryLine from './EntryLine'
+import React from 'react';
+import { Container } from 'semantic-ui-react';
+import EntryLine from './EntryLine';
 
 
-function EntryLines(entries) {
+function EntryLines({entries}) {
     return (
-        <container>
+        <Container>
         {entries.map((entry) =>  (
             <EntryLine
+            key={entry.id}
+            entry={entry}
             description={entry.description}
             value={entry.value}
             isExpense={entry.isExpense}
             />
           ))}
-          </container>
+          </Container>
     )
 }
 
