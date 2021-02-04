@@ -22,7 +22,7 @@ function EntryLine({id, description, value, isExpense = false, deletedEntry} ) {
         </Grid.Row>
         </Grid>
         </Segment>
-        <ModalEdit isOpen={isOpen}/>
+        <ModalEdit isOpen={isOpen} setIsOpen={setIsOpen} />
      </Fragment>
     )
 }
