@@ -10,8 +10,15 @@ import './App.css';
 
 function App() {
 
-  const [entries, setenties] = useState(initialEntries)
-  
+  const [entries, setEnties] = useState(initialEntries)
+
+ const deletedEntry = (id) => { 
+   const result = entries.filter(entry => entry.id !== id);
+   console.log('entries', entries)
+   console.log('result', result)
+   setEnties(result)
+  }
+
   return (
 
     <Container>
@@ -20,7 +27,7 @@ function App() {
   <DisplayBalances/>
 <MainHeader title='History' type='h3'/>
 
-<EntryLines entries={entries} />
+<EntryLines entries={entries} deletedEntry={deletedEntry} />
 
 <MainHeader title='Add new transaction' type='h3'/>
   <NewEntryForm />
