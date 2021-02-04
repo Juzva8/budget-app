@@ -17,11 +17,12 @@ const [entries, setEntries] = useState(initialEntries);
   }
 
 
-  const addEntry = (description, value) => { 
+  const addEntry = (description, value, isExpense) => { 
       const result = entries.concat({
       id: entries.length + 1, 
       description, 
       value,
+      isExpense,
     });
     setEntries(result);
   }
@@ -47,25 +48,25 @@ export default App
 var initialEntries = [
  {
   id: 1,
-  description: 'income',
+  description: 'bill',
   value: '1,000.00',
   isExpense: true,
 },
 {
   id: 2,
-  description: 'income',
+  description: 'bill',
   value: '1,000.00',
   isExpense: true,
 },
 {
   id: 3,
-  description: 'income',
+  description: 'bill',
   value: '1,000.00',
   isExpense: true,
 },
 {
   id: 4,
-  description: 'income',
+  description: 'bill',
   value: '1,000.00',
   isExpense: true,
 }
