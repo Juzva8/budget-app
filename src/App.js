@@ -5,11 +5,16 @@ import NewEntryForm from './components/NewEntryForm'
 import DisplayBalance from './components/DisplayBalance'
 import DisplayBalances from './components/DisplayBalances'
 import EntryLines from './components/EntryLines'
+import ModalEdit from './components/ModalEdit'
 import './App.css';
 
 
 function App() {
-const [entries, setEntries] = useState(initialEntries);
+  const [description, setDescription] = useState('');
+  const [value, setValue] = useState('');
+  const [isExpense, setIsExpense] = useState(true);
+  const [entries, setEntries] = useState(initialEntries);
+  const [isOpen, setIsOpen] = useState(false);
 
  const deletedEntry = (id) => { 
    const result = entries.filter((entry) => entry.id !== id);
@@ -35,10 +40,19 @@ const [entries, setEntries] = useState(initialEntries);
   <DisplayBalances/>
 <MainHeader title='History' type='h3'/>
 
-<EntryLines entries={entries} deletedEntry={deletedEntry} />
+<EntryLines entries={entries} deletedEntry={deletedEntry} setIsOpen={isOpen} />
 
 <MainHeader title='Add new transaction' type='h3'/>
-  <NewEntryForm addEntry = {addEntry} />
+  <NewEntryForm 
+  addEntry = {addEntry} 
+  description={description}
+  setDescription={setDescription}
+  value={value}
+  setValue={setValue}
+  isExpense={isExpense}
+  setIsExpense={setIsExpense}
+  />
+    <ModalEdit isOpen={isOpen} setIsOpen={setIsOpen} />
     </Container>
   );
 }
