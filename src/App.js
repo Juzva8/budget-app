@@ -25,6 +25,8 @@ function App() {
         newEntries[index].value = value;
         newEntries[index].isExpense = isExpense;
         setEntries(newEntries);
+        resetEntry();
+
     }
     
   }, [isOpen]);
@@ -48,7 +50,7 @@ function App() {
 
   } 
 
-  const addEntry = (description, value, isExpense) => { 
+  const addEntry = () => { 
       const result = entries.concat({
       id: entries.length + 1, 
       description, 
@@ -56,6 +58,13 @@ function App() {
       isExpense,
     });
     setEntries(result);
+    resetEntry();
+  }
+  
+  const resetEntry = () => {
+    setDescription(' ');
+    setValue(' ');
+    setIsExpense(true);
   }
 
   return (
