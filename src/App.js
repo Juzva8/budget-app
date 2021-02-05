@@ -21,6 +21,13 @@ function App() {
    setEntries(result);
   }
 
+  const editEntry = (id) => {
+    console.log(`edit entry with id ${id}`);
+    if(id){
+      setIsOpen(true);
+    }
+
+  } 
 
   const addEntry = (description, value, isExpense) => { 
       const result = entries.concat({
@@ -40,7 +47,11 @@ function App() {
   <DisplayBalances/>
 <MainHeader title='History' type='h3'/>
 
-<EntryLines entries={entries} deletedEntry={deletedEntry} setIsOpen={isOpen} />
+<EntryLines 
+entries={entries} 
+deletedEntry={deletedEntry} 
+editEntry = {editEntry}
+/>
 
 <MainHeader title='Add new transaction' type='h3'/>
   <NewEntryForm 
@@ -52,7 +63,17 @@ function App() {
   isExpense={isExpense}
   setIsExpense={setIsExpense}
   />
-    <ModalEdit isOpen={isOpen} setIsOpen={setIsOpen} />
+    <ModalEdit 
+    isOpen={isOpen} 
+    setIsOpen={setIsOpen} 
+    addEntry = {addEntry} 
+    description={description}
+    setDescription={setDescription}
+    value={value}
+    setValue={setValue}
+    isExpense={isExpense}
+    setIsExpense={setIsExpense}
+    />
     </Container>
   );
 }
