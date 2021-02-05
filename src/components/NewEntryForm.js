@@ -3,7 +3,15 @@ import { Form } from 'semantic-ui-react'
 import ButtonSaveOrCancel from './ButtonSaveOrCancel'
 import EntryForm from './EntryForm';
 
-function NewEntryForm({addEntry, description, setDescription, value, setValue, isExpense, setIsExpense }) {
+function NewEntryForm({
+  addEntry, 
+  description, 
+  setDescription, 
+  value, 
+  setValue,
+  isExpense, 
+  setIsExpense 
+  }) {
   
     return (
         <Form unselectable>

@@ -24,6 +24,11 @@ function App() {
   const editEntry = (id) => {
     console.log(`edit entry with id ${id}`);
     if(id){
+      const index = entries.findIndex(entry => entry.id === id);
+      const entry = entries[index];
+      setDescription(entry.description);
+      setValue(entry.value);
+      setIsExpense(entry.isExpense);
       setIsOpen(true);
     }
 
