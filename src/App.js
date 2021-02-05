@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container } from 'semantic-ui-react'
 import MainHeader from './components/MainHeader'
 import NewEntryForm from './components/NewEntryForm'
@@ -15,6 +15,19 @@ function App() {
   const [isExpense, setIsExpense] = useState(true);
   const [entries, setEntries] = useState(initialEntries);
   const [isOpen, setIsOpen] = useState(false);
+  const [entryId, setEntryId] = useState();
+
+  useEffect(() => {
+    if(!isOpen && entryId) {
+        const index = entries.findIndex(entry => entry.id === entryId)
+        const newEntries = [...entries];
+        newEntries [index].description = description;
+        newEntries[index].value = value;
+        newEntries[index].isExpense = isExpense;
+        setEntries(newEntries);
+    }
+    
+  }, [isOpen]);
 
  const deletedEntry = (id) => { 
    const result = entries.filter((entry) => entry.id !== id);
@@ -26,6 +39,7 @@ function App() {
     if(id){
       const index = entries.findIndex(entry => entry.id === id);
       const entry = entries[index];
+      setEntryId(id);
       setDescription(entry.description);
       setValue(entry.value);
       setIsExpense(entry.isExpense);
