@@ -58,26 +58,26 @@ function App() {
     console.log(action);
     switch (action.type) {
       case 'ADD_ENTRY':
-        const newEntries = entries.concat({
-          id: 5,
-          description: 'Bonus',
-          value: 100,
-          expense: false,
-        });
+        const newEntries = state.concat({ ...action.payload });
         return newEntries;
-        
-        break;
-    
+
       default:
         return state;
     }
  
   });
+store.subscribe(() => {
+  console.log('store: ', store.getState())
+})
 
-  console.log('store before ', store.getState())
+  const payload = {
+    id: 5,
+    description: 'Bonus',
+    value: 1000,
+    expense: false,
+  };
 
-  store.dispatch({ type: 'ADD_ENTRY'});
-  console.log('store after ', store.getState())
+  store.dispatch({ type: 'ADD_ENTRY', payload});
 
  const deletedEntry = (id) => { 
    const result = entries.filter((entry) => entry.id !== id);

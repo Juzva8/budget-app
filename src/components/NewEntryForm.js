@@ -14,7 +14,7 @@ function NewEntryForm({
   }) {
   
     return (
-        <Form unselectable>
+        <Form>
         <EntryForm 
         description={description}
         setDescription={setDescription}
