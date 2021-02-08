@@ -7,7 +7,7 @@ import DisplayBalances from './components/DisplayBalances'
 import EntryLines from './components/EntryLines'
 import ModalEdit from './components/ModalEdit'
 import './App.css';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 
 
@@ -54,7 +54,6 @@ function App() {
   }, [entries]);
 
 function entriesReducer(state = initialEntries, action)  {
-  console.log(action);
   let newEntries;
   switch (action.type) {
     case 'ADD_ENTRY':
@@ -66,11 +65,14 @@ function entriesReducer(state = initialEntries, action)  {
     default:
       return state;
   }
-
 }
 
+  const combinedReducers = combineReducers ({
+    entries: entriesReducer,
+  })
 
-  const store = createStore(entriesReducer);
+  const store = createStore(combinedReducers);
+
   store.subscribe(() => {
   console.log('store: ', store.getState())
 })
