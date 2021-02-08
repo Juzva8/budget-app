@@ -7,6 +7,8 @@ import DisplayBalances from './components/DisplayBalances'
 import EntryLines from './components/EntryLines'
 import ModalEdit from './components/ModalEdit'
 import './App.css';
+import { createStore } from 'redux';
+
 
 
 function App() {
@@ -50,6 +52,32 @@ function App() {
     setTotalIncome(totalIncome);
 
   }, [entries]);
+
+
+  const store = createStore((state = initialEntries, action) => {
+    console.log(action);
+    switch (action.type) {
+      case 'ADD_ENTRY':
+        const newEntries = entries.concat({
+          id: 5,
+          description: 'Bonus',
+          value: 100,
+          expense: false,
+        });
+        return newEntries;
+        
+        break;
+    
+      default:
+        return state;
+    }
+ 
+  });
+
+  console.log('store before ', store.getState())
+
+  store.dispatch({ type: 'ADD_ENTRY'});
+  console.log('store after ', store.getState())
 
  const deletedEntry = (id) => { 
    const result = entries.filter((entry) => entry.id !== id);
