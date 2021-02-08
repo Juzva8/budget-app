@@ -53,23 +53,25 @@ function App() {
 
   }, [entries]);
 
+function entriesReducer(state = initialEntries, action)  {
+  console.log(action);
+  let newEntries;
+  switch (action.type) {
+    case 'ADD_ENTRY':
+      newEntries = state.concat({ ...action.payload });
+      return newEntries;
+      case 'REMOVE_ENTRY':
+      newEntries = state.filter(entry => entry.id !== action.payload.id);
+        return newEntries
+    default:
+      return state;
+  }
 
-  const store = createStore((state = initialEntries, action) => {
-    console.log(action);
-    let newEntries;
-    switch (action.type) {
-      case 'ADD_ENTRY':
-        newEntries = state.concat({ ...action.payload });
-        return newEntries;
-        case 'REMOVE_ENTRY':
-        newEntries = state.filter(entry => entry.id !== action.payload.id);
-          return newEntries
-      default:
-        return state;
-    }
- 
-  });
-store.subscribe(() => {
+}
+
+
+  const store = createStore(entriesReducer);
+  store.subscribe(() => {
   console.log('store: ', store.getState())
 })
 
