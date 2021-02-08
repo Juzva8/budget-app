@@ -16,20 +16,40 @@ function App() {
   const [entries, setEntries] = useState(initialEntries);
   const [isOpen, setIsOpen] = useState(false);
   const [entryId, setEntryId] = useState();
+  const [totalIncome, setTotalIncome] = useState(0);
+  const [ExpenseTotal, setExpenseTotal] = useState(0);
+  const [total, setTotal] = useState(0);
+
 
   useEffect(() => {
     if(!isOpen && entryId) {
-        const index = entries.findIndex(entry => entry.id === entryId)
-        const newEntries = [...entries];
-        newEntries [index].description = description;
+      const index = entries.findIndex(entry => entry.id === entryId)
+      const newEntries = [...entries];
+        newEntries[index].description = description;
         newEntries[index].value = value;
         newEntries[index].isExpense = isExpense;
         setEntries(newEntries);
         resetEntry();
 
     }
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
+
+  useEffect(() => {
+    let totalIncome = 0;
+    let totalExpenses = 0;
+  entries.map(entry => {
+    if(entry.isExpense){
+      return (totalExpenses += Number(entry.value));
+    } 
+    return (totalIncome += Number(entry.value));
+  });
+
+    setTotal(totalIncome - totalExpenses);
+    setExpenseTotal(totalExpenses);
+    setTotalIncome(totalIncome);
+
+  }, [entries]);
 
  const deletedEntry = (id) => { 
    const result = entries.filter((entry) => entry.id !== id);
@@ -71,8 +91,8 @@ function App() {
 
     <Container>
 <MainHeader title="Budget" type='h1' />
-  <DisplayBalance title="Your Balance" value="2,500.53" size="small" />
-  <DisplayBalances/>
+  <DisplayBalance title="Your Balance" value={total} size="small" />
+  <DisplayBalances totalIncome={totalIncome} totalExpenses={ExpenseTotal} />
 <MainHeader title='History' type='h3'/>
 
 <EntryLines 
@@ -111,26 +131,26 @@ export default App
 var initialEntries = [
  {
   id: 1,
-  description: 'bill',
-  value: '1,000.00',
-  isExpense: true,
+  description: 'Salary',
+  value: 7000,
+  isExpense: false,
 },
 {
   id: 2,
-  description: 'bill',
-  value: '1,000.00',
+  description: 'Electric bill',
+  value: 230,
   isExpense: true,
 },
 {
   id: 3,
-  description: 'bill',
-  value: '1,000.00',
+  description: 'gas bill',
+  value: 20,
   isExpense: true,
 },
 {
   id: 4,
-  description: 'bill',
-  value: '1,000.00',
+  description: 'phone bill',
+  value: 100,
   isExpense: true,
 }
 ]
