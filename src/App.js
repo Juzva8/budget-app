@@ -65,7 +65,6 @@ function App() {
       setIsExpense(entry.isExpense);
       setIsOpen(true);
     }
-
   } 
 
   const addEntry = () => { 
