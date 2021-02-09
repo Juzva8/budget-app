@@ -9,7 +9,6 @@ function EntryLine({
   description, 
   value, 
   isExpense = false, 
-  deletedEntry, 
   editEntry 
   }) {
     const dispatch = useDispatch();
