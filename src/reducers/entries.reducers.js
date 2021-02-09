@@ -11,6 +11,8 @@ const reducer = (state = initialEntries, action)  => {
           case 'UPDATE_ENTRY': 
           newEntries = [...state];
           const index = newEntries.findIndex(entry => entry.id === action.payload.id)
+          newEntries[index] = {...action.payload.entry};
+          return newEntries;
       default:
         return state;
     }
