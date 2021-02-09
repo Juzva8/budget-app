@@ -1,5 +1,4 @@
-import React, { useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React from 'react';
 import { Form } from 'semantic-ui-react';
 import {addEntryRedux} from '../actions/entries.actions';
 import ButtonSaveOrCancel from './ButtonSaveOrCancel';
@@ -16,7 +15,7 @@ function NewEntryForm() {
     isExpense, 
     setIsExpense, 
     addEntry,
-} = useEntryDetails; 
+} = useEntryDetails(); 
     return (
         <Form unstackable>
         <EntryForm 
