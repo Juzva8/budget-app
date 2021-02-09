@@ -100,7 +100,6 @@ function App() {
 
 <EntryLines 
 entries={entries} 
-deletedEntry={deletedEntry} 
 editEntry = {editEntry}
 />
 
