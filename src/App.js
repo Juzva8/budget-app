@@ -54,11 +54,6 @@ function App() {
 
   }, [entries]);
 
- const deletedEntry = (id) => { 
-   const result = entries.filter((entry) => entry.id !== id);
-  //  setEntries(result);
-  }
-
   const editEntry = (id) => {
     console.log(`edit entry with id ${id}`);
     if(id){
