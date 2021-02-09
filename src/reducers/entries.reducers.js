@@ -18,7 +18,7 @@ export default reducer;
   var initialEntries = [
     {
      id: 1,
-     description: 'Salary',
+     description: 'Salary Redux',
      value: 7000,
      isExpense: false,
    },
