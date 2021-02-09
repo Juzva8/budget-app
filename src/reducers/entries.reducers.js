@@ -14,6 +14,7 @@ const reducer = (state = initialEntries, action)  => {
   }
 export default reducer;
 
+
   var initialEntries = [
     {
      id: 1,
