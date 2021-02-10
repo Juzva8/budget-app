@@ -5,4 +5,3 @@ export const openEditModal = (id) => {
 export const closeEditModal = () => {
     return{ type: 'CLOSE_EDIT_MODAL'};
 };
-

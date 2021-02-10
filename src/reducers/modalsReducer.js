@@ -8,6 +8,7 @@ const reducer = (state = {isOpen: false}, action) => {
         default:
   return state;
     }
+    
 };
 
 export default reducer;

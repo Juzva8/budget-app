@@ -3,8 +3,6 @@ import { Modal, Button } from 'semantic-ui-react'
 import { closeEditModal } from '../actions/modals.actions';
 import EntryForm from './EntryForm'
 
-
-
 function ModalEdit({
     isOpen, 
     setIsOpen,
