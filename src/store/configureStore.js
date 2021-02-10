@@ -7,6 +7,7 @@ const configureStore = () => {
     return createStore(
         combineReducers({
     entries: entriesReducer,
+    modals: modalsReducer,
   }), 
   composeWithDevTools()
   );

@@ -10,9 +10,6 @@ import './App.css';
 import { useSelector } from 'react-redux';
 
 
-
-
-
 function App() {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
