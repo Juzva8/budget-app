@@ -1,1 +1,3 @@
-export const openEdi
+export const openEditModal = (id) => {
+    return{ type: ''}
+}
