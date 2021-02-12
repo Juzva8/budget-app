@@ -13,11 +13,12 @@ function App() {
   const [totalIncome, setTotalIncome] = useState(0);
   const [ExpenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
-  const isOpen = useSelector(state => state.modals.isOpen);
+  const {isOpen, id} = useSelector(state => state.modals);
   const entries = useSelector(state => state.entries);
 
   useEffect(() => {
-  }, [isOpen]);
+    const index = entries.findIndex(entry => entry.id === id);
+  }, [isOpen, id]);
 
   useEffect(() => {
     let totalIncome = 0;
