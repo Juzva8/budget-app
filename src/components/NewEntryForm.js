@@ -6,28 +6,29 @@ import useEntryDetails from '../hooks/useEntryDetails';
 
 function NewEntryForm() {
   const {
-    description, 
-    setDescription, 
-    setValue, 
-    value, 
-    isExpense, 
-    setIsExpense, 
+    description,
+    setDescription,
+    value,
+    setValue,
+    isExpense,
+    setIsExpense,
     addEntry,
-} = useEntryDetails(); 
-    return (
-        <Form unstackable>
-        <EntryForm 
+  } = useEntryDetails();
+
+  return (
+    <Form unstackable>
+      <EntryForm
         description={description}
-        setDescription={setDescription}
         value={value}
-        setValue={setValue}
         isExpense={isExpense}
+        setDescription={setDescription}
+        setValue={setValue}
         setIsExpense={setIsExpense}
-        />
-      <ButtonSaveOrCancel addEntry={addEntry} 
       />
-      </Form>
-    )
+
+      <ButtonSaveOrCancel addEntry={addEntry} />
+    </Form>
+  );
 }
 
-export default NewEntryForm
+export default NewEntryForm;
