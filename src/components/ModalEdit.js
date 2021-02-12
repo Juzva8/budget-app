@@ -5,7 +5,6 @@ import EntryForm from './EntryForm'
 
 function ModalEdit({
     isOpen, 
-    setIsOpen,
     description, 
     setDescription, 
     value, 
@@ -29,7 +28,7 @@ function ModalEdit({
                 </Modal.Content>
                 <Modal.Actions> 
                 <Button onClick={() => dispatch(closeEditModal())}>Close</Button>
-                <Button onClick={() => setIsOpen(false)} primary>OK</Button>
+                <Button onClick={() => dispatch(closeEditModal())} primary>OK</Button>
                 </Modal.Actions>
         </Modal>
     )

@@ -13,11 +13,13 @@ function App() {
   const [totalIncome, setTotalIncome] = useState(0);
   const [ExpenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const [entry, setEntry] = useState();
   const {isOpen, id} = useSelector(state => state.modals);
   const entries = useSelector(state => state.entries);
 
   useEffect(() => {
     const index = entries.findIndex(entry => entry.id === id);
+    setEntry(entries[index])
   }, [isOpen, id]);
 
   useEffect(() => {
@@ -47,8 +49,7 @@ function App() {
 
 <MainHeader title='Add new transaction' type='h3'/>
   <NewEntryForm />
-    <ModalEdit 
-    isOpen={isOpen} />
+    <ModalEdit isOpen={isOpen} {...entry} />
     </Container>
   );
 }
