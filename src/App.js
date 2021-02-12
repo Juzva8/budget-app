@@ -35,10 +35,7 @@ function App() {
 
   }, [entries]);
 
-
-
   return (
-
     <Container>
 <MainHeader title="Budget" type='h1' />
   <DisplayBalance title="Your Balance" value={total} size="small" />
